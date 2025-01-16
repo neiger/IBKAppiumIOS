@@ -1,0 +1,32 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Appium Automation Framework" parallel="methods" thread-count="1">
+
+    <listeners>
+        <listener class-name="general.MobileDriverManager">
+            <!-- Mobile timeout and halt setup -->
+            <parameter name="tmStatic" value="5"/>
+            <parameter name="tmDynamic" value="60"/>
+
+            <!--  Mobile Main Config Parameters  -->
+            <parameter name="platformName" value="ios"/>
+            <parameter name="platformVersion" value="17.5.1"/>
+            <parameter name="deviceName" value="iPhone"/>
+            <parameter name="automationName" value="XCUITest"/>
+            <parameter name="appBundle" value="com.apple.Maps"/>
+            <parameter name="deviceudid" value="00008120-000275A23479A01E"/>
+            <parameter name="noReset" value="true"/> <!-- True to prevent prompt for asking permissions again -->
+            <parameter name="appiumServer" value="http://127.0.0.1:4723/"/>
+        </listener>
+    </listeners>
+
+    <!--  Test Case testing Parameters  -->
+
+    <test name="Android Apps Test Cases">
+        <classes>
+            <class name="tests.ExampleTest">
+            </class>
+        </classes>
+    </test>
+
+</suite>
