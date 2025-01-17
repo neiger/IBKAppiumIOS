@@ -15,6 +15,7 @@ public class MapsPageTest extends MobileDriverManager {
         Assert.assertTrue(mapsPage.verifyLoads(), "[ERROR]    Maps Screen does not loaded");
         Assert.assertTrue(mapsPage.clickInSearchTextField(), "[ERROR]    The field was not clicked");
         Assert.assertTrue(mapsPage.typeSomeText(), "[ERROR]    The field was not filled");
+        Assert.assertTrue(mapsPage.tapOnUserLocationButton(), "[ERROR]    The app did not load the search on screen");
     }
 
 }

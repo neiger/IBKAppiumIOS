@@ -9,8 +9,17 @@ import org.openqa.selenium.support.PageFactory;
 
 public class MapsPage extends BasePage {
 
-    @iOSXCUITFindBy(xpath="//XCUIElementTypeSearchField[@name=\"MapsSearchTextField\"]")
+    @iOSXCUITFindBy(id="MapsSearchTextField")
     private WebElement mapsSearchTxt;
+
+    @iOSXCUITFindBy(id="SettingsButton.Explore")
+    private WebElement settingsButtonExplore;
+
+    @iOSXCUITFindBy(id="UserLocationButton")
+    private WebElement userLocationButton;
+
+    @iOSXCUITFindBy(id="PlaceSummaryAccessoryViewImageView-PlaceSummaryTitleLabel-PlaceSummaryLabel-PlaceSummaryActionButtonsGrid")
+    private WebElement firstResultOption;
 
     public MapsPage(IOSDriver driver) {
         super(driver);
@@ -18,13 +27,22 @@ public class MapsPage extends BasePage {
     }
 
     @Override
-    public boolean verifyLoads() {return waitForElementToBeVisible(mapsSearchTxt);}
+    public boolean verifyLoads() {
+        return waitForElementToBeVisible(mapsSearchTxt)
+                && waitForElementToBeVisible(settingsButtonExplore)
+                && waitForElementToBeVisible(userLocationButton);
+    }
 
     public boolean clickInSearchTextField() {
         return tapElement(mapsSearchTxt);
     }
 
     public boolean typeSomeText(){
-        return sendTextOnCleanElement(mapsSearchTxt, "Some Text");
+        return sendTextOnCleanElement(mapsSearchTxt, "San Jose");
     }
+
+    public boolean tapOnUserLocationButton(){
+        return tapElement(firstResultOption);
+    }
+
 }
